@@ -1,7 +1,6 @@
 import {
   HomeIcon,
   ListOrderedIcon,
-  LogInIcon,
   MenuIcon,
   PercentIcon,
   ShoppingCartIcon,
@@ -10,6 +9,8 @@ import {
 import { Button } from './button'
 import { Card } from './card'
 import { Sheet, SheetContent, SheetHeader, SheetTrigger } from './sheet'
+import { AuthButton } from './auth-button'
+import { UserAvatar } from './user-avatar'
 
 export const Header = () => {
   return (
@@ -25,7 +26,9 @@ export const Header = () => {
             <h1 className="text-left text-sm font-semibold">Menu</h1>
           </SheetHeader>
 
-          <div className="mt-2 flex flex-col gap-2">
+          <UserAvatar />
+
+          <div className="mt-4 flex flex-col gap-2">
             <Button className="w-full justify-start gap-2" variant="outline">
               <HomeIcon size={16} />
               Home
@@ -38,10 +41,7 @@ export const Header = () => {
               <ListOrderedIcon size={16} />
               Catálogo
             </Button>
-            <Button className="w-full justify-start gap-2" variant="outline">
-              <LogInIcon size={16} />
-              Fazer login
-            </Button>
+            <AuthButton />
           </div>
         </SheetContent>
       </Sheet>
