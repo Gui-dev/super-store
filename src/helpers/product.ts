@@ -4,7 +4,7 @@ type computeProductTotalPriceProps = {
   product: Product
 }
 
-type ProductWithTotalPrice = Product & {
+export type ProductWithTotalPrice = Product & {
   total_price: number
 }
 
@@ -17,9 +17,9 @@ export const computeProductTotalPrice = ({
       total_price: Number(product.base_price),
     }
   }
-
-  const total_price =
+  const total_discount =
     Number(product.base_price) * (product.discount_percent / 100)
+  const total_price = Number(product.base_price) - total_discount
 
   return {
     ...product,
