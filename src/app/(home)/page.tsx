@@ -28,9 +28,18 @@ export default async function Home() {
       </section>
 
       <section className="py-8">
-        <h1 className="mb-4 px-5 text-base font-bold">Ofertas</h1>
+        <h1 className="mb-4 px-5 text-base font-bold uppercase">Ofertas</h1>
         <ProductList products={deals} />
       </section>
+
+      <Image
+        src="/banner-home-02.png"
+        height={0}
+        width={0}
+        className="mb-8 h-auto w-full px-5"
+        sizes="100vw"
+        alt="Até 55% de Descontos em mouses"
+      />
     </main>
   )
 }
