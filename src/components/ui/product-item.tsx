@@ -9,7 +9,7 @@ interface IProductItem {
 
 export const ProductItem = ({ product }: IProductItem) => {
   return (
-    <article className="relative flex max-w-[156px] flex-col gap-4">
+    <article className="relative flex max-w-[170px] flex-col gap-4">
       {product.discount_percent > 0 && (
         <Badge className="absolute left-3 top-3 px-2 py-[2px]">
           <ArrowDown size={14} /> {product.discount_percent}%
@@ -26,7 +26,7 @@ export const ProductItem = ({ product }: IProductItem) => {
         />
       </div>
       <div className="flex flex-col gap-1">
-        <h1 className="max-w-[156px] truncate text-sm" title={product.name}>
+        <h1 className="max-w-[170px] truncate text-sm" title={product.name}>
           {product.name}
         </h1>
         <div className="flex items-center gap-2">
