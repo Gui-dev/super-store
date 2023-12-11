@@ -45,6 +45,11 @@ export default async function Home() {
         <h1 className="mb-4 px-5 text-base font-bold uppercase">Teclados</h1>
         <ProductList products={keyboards} />
       </section>
+
+      <PromoBanner
+        src="/banner-home-03.png"
+        alt="Até 20% de Descontos em Fones"
+      />
     </main>
   )
 }
