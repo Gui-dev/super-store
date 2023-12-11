@@ -4,7 +4,7 @@ import { ProductList } from './components/product-list'
 import { PromoBanner } from './components/promo-banner'
 
 export default async function Home() {
-  const deals = await prisma.product.findMany({
+  const deals_promise = prisma.product.findMany({
     where: {
       discount_percent: {
         gt: 0,
@@ -12,13 +12,27 @@ export default async function Home() {
     },
   })
 
-  const keyboards = await prisma.product.findMany({
+  const keyboards_promise = prisma.product.findMany({
     where: {
       category: {
         slug: 'keyboards',
       },
     },
   })
+
+  const headphones_promise = prisma.product.findMany({
+    where: {
+      category: {
+        slug: 'headphones',
+      },
+    },
+  })
+
+  const [deals, keyboards, headphones] = await Promise.all([
+    deals_promise,
+    keyboards_promise,
+    headphones_promise,
+  ])
 
   return (
     <main>
@@ -50,6 +64,11 @@ export default async function Home() {
         src="/banner-home-03.png"
         alt="Até 20% de Descontos em Fones"
       />
+
+      <section className="py-8">
+        <h1 className="mb-4 px-5 text-base font-bold uppercase">Fones</h1>
+        <ProductList products={headphones} />
+      </section>
     </main>
   )
 }
