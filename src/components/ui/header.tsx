@@ -11,6 +11,7 @@ import { Card } from './card'
 import { Sheet, SheetContent, SheetHeader, SheetTrigger } from './sheet'
 import { AuthButton } from './auth-button'
 import { UserAvatar } from './user-avatar'
+import Link from 'next/link'
 
 export const Header = () => {
   return (
@@ -29,18 +30,27 @@ export const Header = () => {
           <UserAvatar />
 
           <div className="mt-4 flex flex-col gap-2">
-            <Button className="w-full justify-start gap-2" variant="outline">
+            <Link
+              href="/"
+              className="flex w-full items-center justify-start gap-2"
+            >
               <HomeIcon size={16} />
               Home
-            </Button>
-            <Button className="w-full justify-start gap-2" variant="outline">
+            </Link>
+            <Link
+              href="/offers"
+              className="flex w-full items-center justify-start gap-2"
+            >
               <PercentIcon size={16} />
               Ofertas
-            </Button>
-            <Button className="w-full justify-start gap-2" variant="outline">
+            </Link>
+            <Link
+              href="/catalog"
+              className="flex w-full items-center justify-start gap-2"
+            >
               <ListOrderedIcon size={16} />
               Catálogo
-            </Button>
+            </Link>
             <AuthButton />
           </div>
         </SheetContent>

@@ -11,7 +11,11 @@ export const ProductList = ({ products }: IProductList) => {
     <div className="flex w-full gap-4 overflow-x-auto px-5 [&::-webkit-scrollbar]:hidden">
       {products.map((product) => {
         const product_final = computeProductTotalPrice({ product })
-        return <ProductItem key={product.id} product={product_final} />
+        return (
+          <div key={product.id} className="w-[170px] max-w-[170px]">
+            <ProductItem product={product_final} />
+          </div>
+        )
       })}
     </div>
   )

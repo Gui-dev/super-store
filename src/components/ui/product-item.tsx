@@ -9,13 +9,13 @@ interface IProductItem {
 
 export const ProductItem = ({ product }: IProductItem) => {
   return (
-    <article className="relative flex max-w-[170px] flex-col gap-4">
+    <article className="relative flex flex-col gap-4">
       {product.discount_percent > 0 && (
         <Badge className="absolute left-3 top-3 px-2 py-[2px]">
           <ArrowDown size={14} /> {product.discount_percent}%
         </Badge>
       )}
-      <div className="flex h-[170px] w-[156px] items-center justify-center rounded-lg bg-accent">
+      <div className="flex h-[170px] w-full items-center justify-center rounded-lg bg-accent">
         <Image
           src={product.image_urls[0]}
           alt={product.name}
@@ -25,11 +25,11 @@ export const ProductItem = ({ product }: IProductItem) => {
           className="h-auto max-h-[70%] w-auto max-w-[80%] object-contain"
         />
       </div>
-      <div className="flex flex-col gap-1">
+      <div className="flex flex-col items-center justify-center gap-1">
         <h1 className="max-w-[170px] truncate text-sm" title={product.name}>
           {product.name}
         </h1>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center justify-center gap-2">
           {product.discount_percent > 0 && (
             <>
               <p className="text-base font-semibold">
