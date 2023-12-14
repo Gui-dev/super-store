@@ -1,5 +1,6 @@
 import { prisma } from '@/lib/prisma'
 import { redirect } from 'next/navigation'
+import ProductImages from './components/product-images'
 
 interface IProductDetails {
   params: {
@@ -19,9 +20,15 @@ const ProductDetails = async ({ params: { slug } }: IProductDetails) => {
   }
 
   return (
-    <div className="flex">
-      <h1>{slug}</h1>
-    </div>
+    <article className="flex flex-col">
+      <ProductImages
+        image_urls={product.image_urls}
+        product_name={product.name}
+      />
+      <div className="px-8">
+        <h1>{product.name}</h1>
+      </div>
+    </article>
   )
 }
 
