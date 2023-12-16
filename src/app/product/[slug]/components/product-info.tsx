@@ -82,8 +82,8 @@ export const ProductInfo = ({ product }: IProductInfo) => {
               Envio para todo <span className="font-bold">Brasil</span>
             </p>
           </div>
-          <p className="text-xs font-bold">Frete grátis</p>
         </div>
+        <p className="text-xs font-bold">Frete grátis</p>
       </div>
 
       <div className="flex flex-col gap-3 py-8">

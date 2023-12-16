@@ -3,6 +3,7 @@ import { redirect } from 'next/navigation'
 import ProductImages from './components/product-images'
 import { ProductInfo } from './components/product-info'
 import { computeProductTotalPrice } from '@/helpers/product'
+import { ProductList } from '@/components/ui/product-list'
 
 interface IProductDetails {
   params: {
@@ -15,6 +16,19 @@ const ProductDetails = async ({ params: { slug } }: IProductDetails) => {
     where: {
       slug,
     },
+    include: {
+      category: {
+        include: {
+          products: {
+            where: {
+              slug: {
+                not: slug,
+              },
+            },
+          },
+        },
+      },
+    },
   })
 
   if (!product) {
@@ -22,6 +36,7 @@ const ProductDetails = async ({ params: { slug } }: IProductDetails) => {
   }
 
   const product_final = computeProductTotalPrice({ product })
+  const recommended_products = product.category.products
 
   return (
     <article className="flex flex-col">
@@ -29,8 +44,12 @@ const ProductDetails = async ({ params: { slug } }: IProductDetails) => {
         image_urls={product.image_urls}
         product_name={product.name}
       />
-      <div className="p-8">
+      <div className="px-8 py-4">
         <ProductInfo product={product_final} />
+      </div>
+      <div className="flex flex-col gap-4 pb-8">
+        <h2 className="px-8">Produtos recomendados</h2>
+        <ProductList products={recommended_products} />
       </div>
     </article>
   )
