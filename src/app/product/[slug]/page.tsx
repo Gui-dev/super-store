@@ -1,6 +1,8 @@
 import { prisma } from '@/lib/prisma'
 import { redirect } from 'next/navigation'
 import ProductImages from './components/product-images'
+import { ProductInfo } from './components/product-info'
+import { computeProductTotalPrice } from '@/helpers/product'
 
 interface IProductDetails {
   params: {
@@ -19,14 +21,16 @@ const ProductDetails = async ({ params: { slug } }: IProductDetails) => {
     redirect('/not-found')
   }
 
+  const product_final = computeProductTotalPrice({ product })
+
   return (
     <article className="flex flex-col">
       <ProductImages
         image_urls={product.image_urls}
         product_name={product.name}
       />
-      <div className="px-8">
-        <h1>{product.name}</h1>
+      <div className="p-8">
+        <ProductInfo product={product_final} />
       </div>
     </article>
   )

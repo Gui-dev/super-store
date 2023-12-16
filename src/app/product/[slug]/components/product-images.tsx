@@ -25,7 +25,7 @@ const ProductImages = ({ image_urls, product_name }: IProductImages) => {
           height={0}
           width={0}
           sizes="vw"
-          className="h-auto max-h-[70%] w-auto max-w-[80%] object-contain"
+          className="h-auto max-h-[70%] w-auto max-w-[80%] object-contain p-5"
         />
       </div>
       <div className="grid grid-cols-4 gap-2 px-8">
