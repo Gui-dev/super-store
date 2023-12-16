@@ -1,17 +1,11 @@
 'use client'
 
 import { useState } from 'react'
-import {
-  ArrowDown,
-  MinusIcon,
-  PlusIcon,
-  ShoppingCartIcon,
-  TruckIcon,
-} from 'lucide-react'
+import { MinusIcon, PlusIcon, ShoppingCartIcon, TruckIcon } from 'lucide-react'
 
-import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { ProductWithTotalPrice } from '@/helpers/product'
+import DiscountBadge from '@/components/ui/discount-badge'
 
 interface IProductInfo {
   product: Pick<
@@ -41,9 +35,7 @@ export const ProductInfo = ({ product }: IProductInfo) => {
               <h2 className="text-xl font-bold">
                 R$ {product.total_price.toFixed(2)}
               </h2>
-              <Badge className="flex items-center px-2 py-[2px]">
-                <ArrowDown size={14} /> {product.discount_percent}%
-              </Badge>
+              <DiscountBadge discount_percent={product.discount_percent} />
             </div>
             <p className="text-sm line-through opacity-75">
               De: R$ {Number(product.base_price).toFixed(2)}

@@ -1,8 +1,8 @@
-import { ProductWithTotalPrice } from '@/helpers/product'
-import { ArrowDown } from 'lucide-react'
 import Image from 'next/image'
-import { Badge } from './badge'
 import Link from 'next/link'
+
+import { ProductWithTotalPrice } from '@/helpers/product'
+import DiscountBadge from './discount-badge'
 
 interface IProductItem {
   product: ProductWithTotalPrice
@@ -13,9 +13,10 @@ export const ProductItem = ({ product }: IProductItem) => {
     <Link href={`/product/${product.slug}`}>
       <article className="relative flex flex-col gap-4">
         {product.discount_percent > 0 && (
-          <Badge className="absolute left-3 top-3 px-2 py-[2px]">
-            <ArrowDown size={14} /> {product.discount_percent}%
-          </Badge>
+          <DiscountBadge
+            discount_percent={product.discount_percent}
+            className="absolute left-3 top-3"
+          />
         )}
         <div className="flex h-[170px] w-full items-center justify-center rounded-lg bg-accent">
           <Image
