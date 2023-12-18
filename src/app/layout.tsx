@@ -6,6 +6,7 @@ import { ReactNode } from 'react'
 import { AuthProvider } from '@/providers/auth'
 import { Header } from '@/components/ui/header'
 import { Footer } from '@/components/ui/footer'
+import { CartProvider } from '@/providers/cart'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -19,9 +20,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="pt-br">
       <body className={`${inter.className} flex h-full flex-col`}>
         <AuthProvider>
-          <Header />
-          <div className="flex-1">{children}</div>
-          <Footer />
+          <CartProvider>
+            <Header />
+            <div className="flex-1">{children}</div>
+            <Footer />
+          </CartProvider>
         </AuthProvider>
       </body>
     </html>
