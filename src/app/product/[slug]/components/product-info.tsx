@@ -6,16 +6,15 @@ import { MinusIcon, PlusIcon, ShoppingCartIcon, TruckIcon } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { ProductWithTotalPrice } from '@/helpers/product'
 import DiscountBadge from '@/components/ui/discount-badge'
+import { useCart } from '@/hooks/use-cart'
 
 interface IProductInfo {
-  product: Pick<
-    ProductWithTotalPrice,
-    'name' | 'description' | 'base_price' | 'discount_percent' | 'total_price'
-  >
+  product: ProductWithTotalPrice
 }
 
 export const ProductInfo = ({ product }: IProductInfo) => {
   const [quantity, setQuantity] = useState(1)
+  const { addProductToCart } = useCart()
 
   const handleDecreaseQuantity = () => {
     setQuantity((prev) => (prev === 1 ? prev : prev - 1))
@@ -23,6 +22,13 @@ export const ProductInfo = ({ product }: IProductInfo) => {
 
   const handleIncreaseQuantity = () => {
     setQuantity((prev) => prev + 1)
+  }
+
+  const handleAddProductToCart = () => {
+    addProductToCart({
+      ...product,
+      quantity,
+    })
   }
 
   return (
@@ -58,7 +64,10 @@ export const ProductInfo = ({ product }: IProductInfo) => {
         </Button>
       </div>
 
-      <Button className="mt-8 flex items-center gap-2 font-bold uppercase">
+      <Button
+        className="mt-8 flex items-center gap-2 font-bold uppercase"
+        onClick={handleAddProductToCart}
+      >
         <ShoppingCartIcon size={16} absoluteStrokeWidth />
         Adicionar ao carrinho
       </Button>
