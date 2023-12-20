@@ -1,13 +1,26 @@
+'use client'
+
 import { ICartProduct } from '@/providers/cart'
 import Image from 'next/image'
 import { Button } from './button'
 import { MinusIcon, PlusIcon, TrashIcon } from 'lucide-react'
+import { useCart } from '@/hooks/use-cart'
 
 interface ICartItem {
   product: ICartProduct
 }
 
 export const CartItem = ({ product }: ICartItem) => {
+  const { increaseProductQuantity, decreaseProductQuantity } = useCart()
+
+  const handleIncreaseProductQuantity = () => {
+    increaseProductQuantity(product.id)
+  }
+
+  const handleDecreaseProductQuantity = () => {
+    decreaseProductQuantity(product.id)
+  }
+
   return (
     <div className="flex items-center justify-between">
       <div className="flex items-center gap-4">
@@ -42,11 +55,21 @@ export const CartItem = ({ product }: ICartItem) => {
           </div>
 
           <div className="flex items-center gap-2">
-            <Button size="icon" variant="outline" className="h-7 w-7">
+            <Button
+              size="icon"
+              variant="outline"
+              className="h-7 w-7"
+              onClick={handleDecreaseProductQuantity}
+            >
               <MinusIcon size={16} />
             </Button>
             <span className="text-xs">{product.quantity}</span>
-            <Button size="icon" variant="outline" className="h-7 w-7">
+            <Button
+              size="icon"
+              variant="outline"
+              className="h-7 w-7"
+              onClick={handleIncreaseProductQuantity}
+            >
               <PlusIcon size={16} />
             </Button>
           </div>
