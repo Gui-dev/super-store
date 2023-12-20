@@ -11,7 +11,15 @@ interface ICartItem {
 }
 
 export const CartItem = ({ product }: ICartItem) => {
-  const { increaseProductQuantity, decreaseProductQuantity } = useCart()
+  const {
+    increaseProductQuantity,
+    decreaseProductQuantity,
+    removeProductsFromCart,
+  } = useCart()
+
+  const handleRemoveProductsFromCart = () => {
+    removeProductsFromCart(product.id)
+  }
 
   const handleIncreaseProductQuantity = () => {
     increaseProductQuantity(product.id)
@@ -77,7 +85,12 @@ export const CartItem = ({ product }: ICartItem) => {
       </div>
 
       <div>
-        <Button size="icon" variant="outline" className="h-7 w-7">
+        <Button
+          size="icon"
+          variant="outline"
+          className="h-7 w-7"
+          onClick={handleRemoveProductsFromCart}
+        >
           <TrashIcon size={16} />
         </Button>
       </div>
