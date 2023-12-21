@@ -4,12 +4,14 @@ import { useCart } from '@/hooks/use-cart'
 import { CartItem } from './cart-item'
 import { computeProductTotalPrice } from '@/helpers/product'
 import { Separator } from './separator'
+import { ScrollArea } from './scroll-area'
+import { Button } from './button'
 
 export const Cart = () => {
   const { products, subtotal, total, total_discount } = useCart()
 
   return (
-    <div className="mt-8 flex flex-col gap-5">
+    <div className="mt-8 flex h-full flex-col gap-5 pb-16">
       {products.length === 0 && (
         <div className="flex items-center justify-center">
           <p className="text-center">
@@ -18,10 +20,14 @@ export const Cart = () => {
         </div>
       )}
 
-      {products.map((product) => {
-        const product_final = computeProductTotalPrice({ product }) as any
-        return <CartItem key={product.id} product={product_final} />
-      })}
+      <ScrollArea className="h-full">
+        <div className="flex h-full flex-col gap-5 overflow-hidden pb-4">
+          {products.map((product) => {
+            const product_final = computeProductTotalPrice({ product }) as any
+            return <CartItem key={product.id} product={product_final} />
+          })}
+        </div>
+      </ScrollArea>
 
       {products.length > 0 && (
         <div className="flex flex-col gap-3">
@@ -45,6 +51,8 @@ export const Cart = () => {
             <span>Total </span>
             <strong className="text-lg">R$ {total.toFixed(2)}</strong>
           </div>
+
+          <Button className="mt-7 font-bold uppercase">Finalizar compra</Button>
         </div>
       )}
     </div>
