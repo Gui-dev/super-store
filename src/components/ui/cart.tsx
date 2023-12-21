@@ -1,14 +1,25 @@
 'use client'
 
+import { loadStripe } from '@stripe/stripe-js'
+
 import { useCart } from '@/hooks/use-cart'
 import { CartItem } from './cart-item'
 import { computeProductTotalPrice } from '@/helpers/product'
 import { Separator } from './separator'
 import { ScrollArea } from './scroll-area'
 import { Button } from './button'
+import { createCheckout } from '@/actions/checkout'
 
 export const Cart = () => {
   const { products, subtotal, total, total_discount } = useCart()
+
+  const handleFineshedPurchase = async () => {
+    const checkout = await createCheckout(products)
+    const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY)
+    stripe?.redirectToCheckout({
+      sessionId: checkout.id,
+    })
+  }
 
   return (
     <div className="mt-8 flex h-full flex-col gap-5 pb-16">
@@ -52,7 +63,12 @@ export const Cart = () => {
             <strong className="text-lg">R$ {total.toFixed(2)}</strong>
           </div>
 
-          <Button className="mt-7 font-bold uppercase">Finalizar compra</Button>
+          <Button
+            className="mt-7 font-bold uppercase"
+            onClick={handleFineshedPurchase}
+          >
+            Finalizar compra
+          </Button>
         </div>
       )}
     </div>
