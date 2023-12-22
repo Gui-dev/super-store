@@ -13,19 +13,12 @@ export const POST = async (request: NextRequest) => {
     })
   }
 
-  const event = stripe.webhooks.constructEvent(
-    text,
-    signature,
-    process.env.STRIPE_WEBHOOK_SECRET_KEY,
-  )
+  const event = stripe.webhooks.constructEvent(text, signature, process.env.STRIPE_WEBHOOK_SECRET_KEY)
 
   if (event.type === 'checkout.session.completed') {
-    const session_with_line_items = await stripe.checkout.sessions.retrieve(
-      event.data.object.id,
-      {
-        expand: ['line_items'],
-      },
-    )
+    const session_with_line_items = await stripe.checkout.sessions.retrieve(event.data.object.id, {
+      expand: ['line_items'],
+    })
 
     console.log('SESSION_METADATA: ', session_with_line_items.line_items)
   }

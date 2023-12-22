@@ -11,11 +11,7 @@ interface ICartItem {
 }
 
 export const CartItem = ({ product }: ICartItem) => {
-  const {
-    increaseProductQuantity,
-    decreaseProductQuantity,
-    removeProductsFromCart,
-  } = useCart()
+  const { increaseProductQuantity, decreaseProductQuantity, removeProductsFromCart } = useCart()
 
   const handleRemoveProductsFromCart = () => {
     removeProductsFromCart(product.id)
@@ -47,37 +43,21 @@ export const CartItem = ({ product }: ICartItem) => {
           <div className="flex items-center gap-2">
             {product.discount_percent > 0 && (
               <>
-                <p className="text-sm font-bold">
-                  R$ {product.total_price.toFixed(2)}
-                </p>
-                <p className="text-xs line-through opacity-75">
-                  R$ {Number(product.base_price).toFixed(2)}
-                </p>
+                <p className="text-sm font-bold">R$ {product.total_price.toFixed(2)}</p>
+                <p className="text-xs line-through opacity-75">R$ {Number(product.base_price).toFixed(2)}</p>
               </>
             )}
             {product.discount_percent === 0 && (
-              <p className="text-sm font-bold">
-                R$ {Number(product.base_price).toFixed(2)}
-              </p>
+              <p className="text-sm font-bold">R$ {Number(product.base_price).toFixed(2)}</p>
             )}
           </div>
 
           <div className="flex items-center gap-2">
-            <Button
-              size="icon"
-              variant="outline"
-              className="h-7 w-7"
-              onClick={handleDecreaseProductQuantity}
-            >
+            <Button size="icon" variant="outline" className="h-7 w-7" onClick={handleDecreaseProductQuantity}>
               <MinusIcon size={16} />
             </Button>
             <span className="text-xs">{product.quantity}</span>
-            <Button
-              size="icon"
-              variant="outline"
-              className="h-7 w-7"
-              onClick={handleIncreaseProductQuantity}
-            >
+            <Button size="icon" variant="outline" className="h-7 w-7" onClick={handleIncreaseProductQuantity}>
               <PlusIcon size={16} />
             </Button>
           </div>
@@ -85,12 +65,7 @@ export const CartItem = ({ product }: ICartItem) => {
       </div>
 
       <div>
-        <Button
-          size="icon"
-          variant="outline"
-          className="h-7 w-7"
-          onClick={handleRemoveProductsFromCart}
-        >
+        <Button size="icon" variant="outline" className="h-7 w-7" onClick={handleRemoveProductsFromCart}>
           <TrashIcon size={16} />
         </Button>
       </div>

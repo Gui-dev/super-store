@@ -1,12 +1,6 @@
 import Link from 'next/link'
 import { HomeIcon, ListOrderedIcon, MenuIcon, PercentIcon } from 'lucide-react'
-import {
-  Sheet,
-  SheetClose,
-  SheetContent,
-  SheetHeader,
-  SheetTrigger,
-} from './sheet'
+import { Sheet, SheetClose, SheetContent, SheetHeader, SheetTrigger } from './sheet'
 
 import { AuthButton } from './auth-button'
 import { UserAvatar } from './user-avatar'
@@ -29,28 +23,19 @@ export const HeaderMenu = () => {
 
         <div className="mt-4 flex flex-col gap-2">
           <SheetClose asChild>
-            <Link
-              href="/"
-              className="flex w-full items-center justify-start gap-2"
-            >
+            <Link href="/" className="flex w-full items-center justify-start gap-2">
               <HomeIcon size={16} />
               Home
             </Link>
           </SheetClose>
           <SheetClose asChild>
-            <Link
-              href="/offers"
-              className="flex w-full items-center justify-start gap-2"
-            >
+            <Link href="/offers" className="flex w-full items-center justify-start gap-2">
               <PercentIcon size={16} />
               Ofertas
             </Link>
           </SheetClose>
           <SheetClose asChild>
-            <Link
-              href="/catalog"
-              className="flex w-full items-center justify-start gap-2"
-            >
+            <Link href="/catalog" className="flex w-full items-center justify-start gap-2">
               <ListOrderedIcon size={16} />
               Catálogo
             </Link>

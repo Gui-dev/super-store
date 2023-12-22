@@ -15,10 +15,7 @@ export const CartMenu = () => {
       </SheetTrigger>
       <SheetContent side="right">
         <SheetHeader>
-          <Badge
-            className="w-fit gap-1 border-2 border-primary px-3 py-[0.375rem]"
-            variant="outline"
-          >
+          <Badge className="w-fit gap-1 border-2 border-primary px-3 py-[0.375rem]" variant="outline">
             <ShoppingCartIcon size={16} />
             <h1 className="text-base uppercase">Carrinho</h1>
           </Badge>

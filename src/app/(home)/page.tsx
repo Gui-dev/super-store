@@ -28,18 +28,11 @@ export default async function Home() {
     },
   })
 
-  const [deals, keyboards, headphones] = await Promise.all([
-    deals_promise,
-    keyboards_promise,
-    headphones_promise,
-  ])
+  const [deals, keyboards, headphones] = await Promise.all([deals_promise, keyboards_promise, headphones_promise])
 
   return (
     <main>
-      <PromoBanner
-        src="/banner-home-01.png"
-        alt="Até 50% de Descontos só esse mês"
-      />
+      <PromoBanner src="/banner-home-01.png" alt="Até 50% de Descontos só esse mês" />
 
       <section className="mt-8 px-5">
         <Categories />
@@ -50,20 +43,14 @@ export default async function Home() {
         <ProductList products={deals} />
       </section>
 
-      <PromoBanner
-        src="/banner-home-02.png"
-        alt="Até 55% de Descontos em mouses"
-      />
+      <PromoBanner src="/banner-home-02.png" alt="Até 55% de Descontos em mouses" />
 
       <section className="py-8">
         <h1 className="mb-4 px-5 text-base font-bold uppercase">Teclados</h1>
         <ProductList products={keyboards} />
       </section>
 
-      <PromoBanner
-        src="/banner-home-03.png"
-        alt="Até 20% de Descontos em Fones"
-      />
+      <PromoBanner src="/banner-home-03.png" alt="Até 20% de Descontos em Fones" />
 
       <section className="py-8">
         <h1 className="mb-4 px-5 text-base font-bold uppercase">Fones</h1>

@@ -16,9 +16,7 @@ export const UserAvatar = () => {
       <div className="flex items-center gap-2 py-4">
         <Avatar>
           <AvatarFallback>{data?.user?.name?.[0].toUpperCase()}</AvatarFallback>
-          {data?.user?.image && (
-            <AvatarImage src={data.user.image} alt={data.user.name!} />
-          )}
+          {data?.user?.image && <AvatarImage src={data.user.image} alt={data.user.name!} />}
         </Avatar>
         <div className="flex flex-col">
           <p className="text-base font-medium">{data?.user?.name}</p>
