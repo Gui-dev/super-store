@@ -13,7 +13,10 @@ export const ProductItem = ({ product }: IProductItem) => {
     <Link href={`/product/${product.slug}`}>
       <article className="relative flex flex-col gap-4">
         {product.discount_percent > 0 && (
-          <DiscountBadge discount_percent={product.discount_percent} className="absolute left-3 top-3" />
+          <DiscountBadge
+            discount_percent={product.discount_percent}
+            className="absolute left-3 top-3"
+          />
         )}
         <div className="flex h-[170px] w-full items-center justify-center rounded-lg bg-accent">
           <Image
@@ -32,12 +35,18 @@ export const ProductItem = ({ product }: IProductItem) => {
           <div className="flex items-center justify-center gap-2">
             {product.discount_percent > 0 && (
               <>
-                <p className="text-base font-semibold">R${product.total_price.toFixed(2)}</p>
-                <p className="text-xs line-through opacity-75">R${Number(product.base_price).toFixed(2)}</p>
+                <p className="text-base font-semibold">
+                  R${product.total_price.toFixed(2)}
+                </p>
+                <p className="text-xs line-through opacity-75">
+                  R${Number(product.base_price).toFixed(2)}
+                </p>
               </>
             )}
             {product.discount_percent === 0 && (
-              <p className="text-base font-semibold">R${Number(product.base_price).toFixed(2)}</p>
+              <p className="text-base font-semibold">
+                R${Number(product.base_price).toFixed(2)}
+              </p>
             )}
           </div>
         </div>

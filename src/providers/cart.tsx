@@ -54,7 +54,9 @@ export const CartProvider = ({ children }: ICartProvider) => {
   const total_discount = total - subtotal
 
   const addProductToCart = (product: ICartProduct) => {
-    const product_is_already_on_cart = products.some((cart_product) => cart_product.id === product.id)
+    const product_is_already_on_cart = products.some(
+      (cart_product) => cart_product.id === product.id,
+    )
     if (product_is_already_on_cart) {
       setProducts((prev) =>
         prev.map((cart_product) => {
@@ -73,7 +75,9 @@ export const CartProvider = ({ children }: ICartProvider) => {
   }
 
   const removeProductsFromCart = (product_id: string) => {
-    setProducts((prev) => prev.filter((cart_product) => cart_product.id !== product_id))
+    setProducts((prev) =>
+      prev.filter((cart_product) => cart_product.id !== product_id),
+    )
   }
 
   const increaseProductQuantity = (product_id: string) => {

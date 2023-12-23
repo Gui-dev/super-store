@@ -38,14 +38,20 @@ export const ProductInfo = ({ product }: IProductInfo) => {
         {product.discount_percent > 0 && (
           <div className="flex flex-col gap-1">
             <div className="flex items-center gap-2">
-              <h2 className="text-xl font-bold">R$ {product.total_price.toFixed(2)}</h2>
+              <h2 className="text-xl font-bold">
+                R$ {product.total_price.toFixed(2)}
+              </h2>
               <DiscountBadge discount_percent={product.discount_percent} />
             </div>
-            <p className="text-sm line-through opacity-75">De: R$ {Number(product.base_price).toFixed(2)}</p>
+            <p className="text-sm line-through opacity-75">
+              De: R$ {Number(product.base_price).toFixed(2)}
+            </p>
           </div>
         )}
         {product.discount_percent === 0 && (
-          <h2 className="text-xl font-bold">R$ {Number(product.base_price).toFixed(2)}</h2>
+          <h2 className="text-xl font-bold">
+            R$ {Number(product.base_price).toFixed(2)}
+          </h2>
         )}
       </div>
       <div className="flex items-center gap-4 py-4">
@@ -58,7 +64,10 @@ export const ProductInfo = ({ product }: IProductInfo) => {
         </Button>
       </div>
 
-      <Button className="mt-8 flex items-center gap-2 font-bold uppercase" onClick={handleAddProductToCart}>
+      <Button
+        className="mt-8 flex items-center gap-2 font-bold uppercase"
+        onClick={handleAddProductToCart}
+      >
         <ShoppingCartIcon size={16} absoluteStrokeWidth />
         Adicionar ao carrinho
       </Button>

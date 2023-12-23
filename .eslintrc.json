@@ -29,13 +29,14 @@
     "prettier/prettier": [
       "error",
       {
-        "printWidth": 115,
+        "printWidth": 80,
         "tabWidth": 2,
         "singleQuote": true,
         "trailingComma": "all",
         "arrowParens": "always",
         "semi": false,
-        "endOfLine": "auto"
+        "endOfLine": "auto",
+        "proseWrap": "always"
       }
     ],
     "react/react-in-jsx-scope": "off",

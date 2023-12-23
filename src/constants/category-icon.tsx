@@ -1,4 +1,11 @@
-import { KeyboardIcon, MonitorIcon, HeadphonesIcon, SquareIcon, SpeakerIcon, MouseIcon } from 'lucide-react'
+import {
+  KeyboardIcon,
+  MonitorIcon,
+  HeadphonesIcon,
+  SquareIcon,
+  SpeakerIcon,
+  MouseIcon,
+} from 'lucide-react'
 
 export const CATEGORY_ICON = {
   keyboards: <KeyboardIcon size={16} />,

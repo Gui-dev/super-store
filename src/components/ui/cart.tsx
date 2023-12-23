@@ -25,7 +25,9 @@ export const Cart = () => {
     <div className="mt-8 flex h-full flex-col gap-5 pb-16">
       {products.length === 0 && (
         <div className="flex items-center justify-center">
-          <p className="text-center">Você ainda não tem nenhum produto no carrinho!</p>
+          <p className="text-center">
+            Você ainda não tem nenhum produto no carrinho!
+          </p>
         </div>
       )}
 
@@ -61,7 +63,10 @@ export const Cart = () => {
             <strong className="text-lg">R$ {total.toFixed(2)}</strong>
           </div>
 
-          <Button className="mt-7 font-bold uppercase" onClick={handleFineshedPurchase}>
+          <Button
+            className="mt-7 font-bold uppercase"
+            onClick={handleFineshedPurchase}
+          >
             Finalizar compra
           </Button>
         </div>

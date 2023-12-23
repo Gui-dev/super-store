@@ -8,7 +8,10 @@ const Catalog = async () => {
 
   return (
     <section className="mt-8 flex flex-col gap-8 px-8 pb-8">
-      <Badge className="w-fit gap-1 border-2 border-primary px-3 py-[0.375rem]" variant="outline">
+      <Badge
+        className="w-fit gap-1 border-2 border-primary px-3 py-[0.375rem]"
+        variant="outline"
+      >
         <ShapesIcon size={16} />
         <h1 className="text-base uppercase">Catalogo</h1>
       </Badge>

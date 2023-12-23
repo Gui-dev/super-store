@@ -36,7 +36,8 @@ const ProductImages = ({ image_urls, product_name }: IProductImages) => {
               className={clsx(
                 'flex h-[50px] items-center justify-center rounded-lg bg-accent hover:bg-accent/95',
                 {
-                  'border-2 border-solid border-primary': image === currentImage,
+                  'border-2 border-solid border-primary':
+                    image === currentImage,
                 },
               )}
               onClick={() => handleImageSelected(image)}

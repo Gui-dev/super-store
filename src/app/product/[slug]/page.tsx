@@ -40,7 +40,10 @@ const ProductDetails = async ({ params: { slug } }: IProductDetails) => {
 
   return (
     <article className="flex flex-col">
-      <ProductImages image_urls={product.image_urls} product_name={product.name} />
+      <ProductImages
+        image_urls={product.image_urls}
+        product_name={product.name}
+      />
       <div className="px-8 py-4">
         <ProductInfo product={product_final} />
       </div>
