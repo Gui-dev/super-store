@@ -13,7 +13,7 @@ export const CartMenu = () => {
           <ShoppingCartIcon />
         </Button>
       </SheetTrigger>
-      <SheetContent side="right">
+      <SheetContent side="right" className="w-[350px]">
         <SheetHeader>
           <Badge
             className="w-fit gap-1 border-2 border-primary px-3 py-[0.375rem]"
