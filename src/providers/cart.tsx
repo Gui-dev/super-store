@@ -40,9 +40,7 @@ export const CartContext = createContext<ICartContext>({
 })
 
 export const CartProvider = ({ children }: ICartProvider) => {
-  const [products, setProducts] = useState<ICartProduct[]>(
-    JSON.parse(localStorage.getItem('@super_store:cart') || '[]'),
-  )
+  const [products, setProducts] = useState<ICartProduct[]>([])
   const subtotal = useMemo(() => {
     return products.reduce((acc, product) => {
       return acc + Number(product.base_price) * product.quantity
@@ -117,6 +115,13 @@ export const CartProvider = ({ children }: ICartProvider) => {
       localStorage.setItem('@super_store:cart', JSON.stringify(products))
     }
   }, [products])
+
+  useEffect(() => {
+    const products = localStorage.getItem('@super_store:cart')
+    if (products) {
+      setProducts(JSON.parse(products))
+    }
+  }, [])
 
   return (
     <CartContext.Provider
