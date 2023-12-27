@@ -39,7 +39,7 @@ export const HeaderMenu = () => {
           </SheetClose>
           <SheetClose asChild>
             <Link
-              href="/offers"
+              href="/deals"
               className="flex w-full items-center justify-start gap-2"
             >
               <PercentIcon size={16} />
