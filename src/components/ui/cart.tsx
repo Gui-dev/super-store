@@ -9,11 +9,18 @@ import { Separator } from './separator'
 import { ScrollArea } from './scroll-area'
 import { Button } from './button'
 import { createCheckout } from '@/actions/checkout'
+import { createOrder } from '@/actions/order'
+import { useSession } from 'next-auth/react'
 
 export const Cart = () => {
+  const { data } = useSession()
   const { products, subtotal, total, total_discount } = useCart()
 
   const handleFineshedPurchase = async () => {
+    if (!data?.user) {
+      return
+    }
+    await createOrder({ products, user_id: (data.user as any).id })
     const checkout = await createCheckout(products)
     const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY)
     stripe?.redirectToCheckout({
