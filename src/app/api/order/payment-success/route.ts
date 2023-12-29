@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 
 import { stripe } from '@/providers/stripe'
+import { prisma } from '@/lib/prisma'
 
 export const POST = async (request: NextRequest) => {
   const text = await request.text()
@@ -20,14 +21,19 @@ export const POST = async (request: NextRequest) => {
   )
 
   if (event.type === 'checkout.session.completed') {
-    const session_with_line_items = await stripe.checkout.sessions.retrieve(
-      event.data.object.id,
-      {
-        expand: ['line_items'],
-      },
-    )
+    const session = event.data.object
+    await stripe.checkout.sessions.retrieve(event.data.object.id, {
+      expand: ['line_items'],
+    })
 
-    console.log('SESSION_METADATA: ', session_with_line_items.line_items)
+    await prisma.order.update({
+      where: {
+        id: session.metadata!.order_id,
+      },
+      data: {
+        status: 'PAYMENT_CONFIRMED',
+      },
+    })
   }
 
   return NextResponse.json({

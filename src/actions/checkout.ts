@@ -3,12 +3,23 @@
 import { ICartProduct } from '@/providers/cart'
 import { stripe } from '@/providers/stripe'
 
-export const createCheckout = async (products: ICartProduct[]) => {
+interface ICreateCheckout {
+  products: ICartProduct[]
+  order_id: string
+}
+
+export const createCheckout = async ({
+  products,
+  order_id,
+}: ICreateCheckout) => {
   const checkout = await stripe.checkout.sessions.create({
     payment_method_types: ['card'],
     mode: 'payment',
     success_url: process.env.HOST_URL,
     cancel_url: process.env.HOST_URL,
+    metadata: {
+      order_id,
+    },
     line_items: products.map((product) => {
       return {
         price_data: {

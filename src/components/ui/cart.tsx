@@ -20,8 +20,11 @@ export const Cart = () => {
     if (!data?.user) {
       return
     }
-    await createOrder({ products, user_id: (data.user as any).id })
-    const checkout = await createCheckout(products)
+    const order = await createOrder({
+      products,
+      user_id: (data.user as any).id,
+    })
+    const checkout = await createCheckout({ products, order_id: order.id })
     const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY)
     stripe?.redirectToCheckout({
       sessionId: checkout.id,
