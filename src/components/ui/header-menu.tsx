@@ -1,5 +1,11 @@
 import Link from 'next/link'
-import { HomeIcon, ListOrderedIcon, MenuIcon, PercentIcon } from 'lucide-react'
+import {
+  HomeIcon,
+  ListOrderedIcon,
+  MenuIcon,
+  PackageCheck,
+  PercentIcon,
+} from 'lucide-react'
 import {
   Sheet,
   SheetClose,
@@ -53,6 +59,15 @@ export const HeaderMenu = () => {
             >
               <ListOrderedIcon size={16} />
               Catálogo
+            </Link>
+          </SheetClose>
+          <SheetClose asChild>
+            <Link
+              href="/orders"
+              className="flex w-full items-center justify-start gap-2"
+            >
+              <PackageCheck size={16} />
+              Meus Pedidos
             </Link>
           </SheetClose>
           <AuthButton />
