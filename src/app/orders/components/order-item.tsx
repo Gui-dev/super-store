@@ -9,11 +9,16 @@ import {
 } from '@/components/ui/accordion'
 import { Card } from '@/components/ui/card'
 import { Prisma } from '@prisma/client'
+import { OrderProductItem } from './order-product-item'
 
 interface IOrderItem {
   order: Prisma.OrderGetPayload<{
     include: {
-      order_product: true
+      order_product: {
+        include: {
+          product: true
+        }
+      }
     }
   }>
 }
@@ -24,7 +29,7 @@ export const OrderItem = ({ order }: IOrderItem) => {
   })
 
   return (
-    <Card className="mt-8 w-full p-5">
+    <Card className="my-8 w-full p-5">
       <Accordion type="single" collapsible className="w-full">
         <AccordionItem value={order.id}>
           <AccordionTrigger>
@@ -33,7 +38,7 @@ export const OrderItem = ({ order }: IOrderItem) => {
             </div>
           </AccordionTrigger>
           <AccordionContent>
-            <div className="flex flex-col">
+            <div className="flex flex-col gap-4">
               <div className="flex items-center justify-between">
                 <div className="flex flex-col gap-1 text-center">
                   <p className="text-xs font-bold text-gray-300">Status</p>
@@ -47,6 +52,17 @@ export const OrderItem = ({ order }: IOrderItem) => {
                   <p className="text-xs font-bold text-gray-300">Pagamento</p>
                   <span className="font-bold opacity-60">CARTÃO</span>
                 </div>
+              </div>
+
+              <div className="flex flex-col">
+                {order.order_product.map((order_product) => {
+                  return (
+                    <OrderProductItem
+                      key={order_product.id}
+                      order_product={order_product}
+                    />
+                  )
+                })}
               </div>
             </div>
           </AccordionContent>
