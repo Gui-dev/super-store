@@ -47,7 +47,7 @@ const Orders = async () => {
   }
 
   return (
-    <div className="mt-8 flex flex-col px-8">
+    <div className="mt-5 flex flex-col px-8">
       <Badge
         className="w-fit gap-1 border-2 border-primary px-3 py-[0.375rem]"
         variant="outline"
