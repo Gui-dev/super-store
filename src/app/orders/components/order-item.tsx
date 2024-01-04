@@ -13,6 +13,7 @@ import { OrderProductItem } from './order-product-item'
 import { Separator } from '@/components/ui/separator'
 import { useMemo } from 'react'
 import { computeProductTotalPrice } from '@/helpers/product'
+import { getOrderStatus } from '../helpers/status'
 
 interface IOrderItem {
   order: Prisma.OrderGetPayload<{
@@ -53,9 +54,10 @@ export const OrderItem = ({ order }: IOrderItem) => {
     }, 0)
   }, [order.order_product])
   const total_discount = subtotal - total
+  const payment_status = getOrderStatus(order.status)
 
   return (
-    <Card className="my-8 w-full p-5">
+    <Card className="w-full p-5">
       <Accordion type="single" collapsible className="w-full">
         <AccordionItem value={order.id}>
           <AccordionTrigger>
@@ -71,7 +73,9 @@ export const OrderItem = ({ order }: IOrderItem) => {
               <div className="flex items-center justify-between">
                 <div className="flex flex-col gap-1 text-center">
                   <p className="text-xs font-bold text-gray-300">Status</p>
-                  <span className="font-bold text-primary">PAGO</span>
+                  <span className="font-bold text-primary">
+                    {payment_status}
+                  </span>
                 </div>
                 <div className="flex flex-col gap-1 text-center">
                   <p className="text-xs font-bold text-gray-300">Data</p>
@@ -83,7 +87,7 @@ export const OrderItem = ({ order }: IOrderItem) => {
                 </div>
               </div>
 
-              <div className="flex flex-col">
+              <div className="flex flex-col gap-5">
                 {order.order_product.map((order_product) => {
                   return (
                     <OrderProductItem
