@@ -62,7 +62,9 @@ export const OrderItem = ({ order }: IOrderItem) => {
         <AccordionItem value={order.id}>
           <AccordionTrigger>
             <div className="flex flex-col gap-1 text-left">
-              <p>Pedidos com {order.order_product.length} produto(s)</p>
+              <p className="font-bold uppercase">
+                Pedidos com {order.order_product.length} produto(s)
+              </p>
               <p className="text-xs opacity-60">
                 Feito em {formatted_order_date}
               </p>
