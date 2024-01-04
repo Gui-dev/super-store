@@ -56,7 +56,7 @@ const Orders = async () => {
         <h1 className="text-base uppercase">Meus Pedidos</h1>
       </Badge>
 
-      <div className="mt-5 flex flex-col gap-5">
+      <div className="mt-5 flex flex-col gap-5 md:grid md:grid-cols-2 lg:grid lg:grid-cols-3">
         {orders.map((order) => {
           return <OrderItem key={order.id} order={order} />
         })}
