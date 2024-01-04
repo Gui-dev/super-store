@@ -2,7 +2,7 @@ import { getServerSession } from 'next-auth'
 import { redirect } from 'next/navigation'
 import { PackageCheck } from 'lucide-react'
 
-import { authOptions } from '../api/auth/[...nextauth]/route'
+import { authOptions } from '@/lib/auth-options'
 import { Badge } from '@/components/ui/badge'
 import { prisma } from '@/lib/prisma'
 import { OrderItem } from './components/order-item'
