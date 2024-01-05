@@ -1,7 +1,7 @@
 # Super Store 🚀
 
 <p>
-Bem-vindo à Super Store, sua loja virtual premium para moda contemporânea. Explore nossa seleção cuidadosamente curada de tênis, roupas e bolsas, refletindo as últimas tendências. Garantimos qualidade superior com marcas líderes, oferecendo uma experiência de compra online segura e conveniente. De modelos clássicos a peças elegantes, a Super Store é o seu destino para expressar seu estilo único com praticidade e sofisticação. Descubra a moda sem sair de casa, onde cada clique é uma declaração de estilo na Super Store
+Bem-vindo à Super Store, é uma loja virtual que foi desenvolvida com o que ã de mais atual em tecnologias, NextJS, usando server compoents, client components, Next Auth, Prisma e o metodo de pagamento utilazado foi o Stripe.
 </p>
 
 # Screens
@@ -21,8 +21,7 @@ Bem-vindo à Super Store, sua loja virtual premium para moda contemporânea. Exp
 - [Typescript](https://www.typescriptlang.org)
 - [Tailwindcss](https://tailwindcss.com)
 - [Prisma](https://www.prisma.io/)
-- [Clerk](https://clerk.com/)
-- [Zustand](https://github.com/pmndrs/zustand)
+- [Auth Next](https://next-auth.js.org)
 - [Supabase](https://supabase.com/)
 - [Stripe](https://stripe.com/br)
 
@@ -34,7 +33,7 @@ You need to install [Node.js](https://nodejs.org)
 
 ```bash
 # Repository clone
-$ git clone https://github.com/Gui-dev/tickets.git
+$ git clone https://github.com/Gui-dev/super-store.git
 # Install the dependencies
 $ npm install
 # Prisma Client
@@ -47,4 +46,4 @@ The application will be available to access in your browser on localhost
 (http://localhost:3000)
 
 The app will be available for access on your browser at
-(https://virtual-store-mu.vercel.app/)
+(https://super-store-iota.vercel.app)
